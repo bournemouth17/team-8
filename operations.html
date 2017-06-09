@@ -44,20 +44,36 @@
             <li><a href="index.html">About</a></li>
             <li><a href="volunteer.html">Volunteer</a></li>
             <li class="active"><a href="#">Operations</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="c">Contact</a></li>
           </ul>
         </nav>
       </div>
 
       <!-- Jumbotron -->
-      <div> <!--class="jumbotron"-->
+      <!--
+      <div class="jumbotron">
         <h1>Operations</h1>
       </div>
+      -->
       <!-- Example row of columns -->
       <div class="row">
-        <div class="col-lg-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <div> <!--class="col-lg-4"-->
+          <h2>Operations</h2>
+          <p>
+            <?php
+                //Step1
+                 $db = mysqli_connect('52.211.195.5','root','root','team_8')
+                 if ($db)
+                 {
+                    ?>
+                    hello
+                    <?php
+                 }
+                 or die('Error connecting to MySQL server.');
+            ?>          
+          </p>
+          
+          
           <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
        </div>
       </div>
