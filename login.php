@@ -38,9 +38,10 @@
       <!-- The justified navigation menu is meant for single line per list item.
            Multiple lines will require custom code not provided by Bootstrap. -->
       <div class="masthead">
-        <h3 class="text-muted">Team Rubicon - Terminal</h3>
+        <img src="http://www.teamrubiconuk.org/wp-content/themes/TeamRubicon/assets/img/TR-Logo2x.png">
             
         <?php
+            error_reporting(0);
             include("check.php");
         ?>
         
@@ -51,7 +52,7 @@
                 ?>
                 <ul class="nav nav-justified">
                     <li><a href="index.html">About</a></li>
-                    <li><a href="volunteer.html">Training</a></li>
+                    <li><a href="training.html">Training</a></li>
                     <li><a href="operations.html">Operations</a></li>
                     <li><a href="signup.html">Profile</a></li>      
                 </ul>
@@ -65,7 +66,8 @@
             <li><a href="operations.html">Operations</a></li>
             <li><a href="signup.html">Sign Up</a></li>
           </ul>
-        <?php } ?>
+        <?php }
+error_reporting(1);        ?>
         </nav>
       </div>
       <br>
