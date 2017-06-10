@@ -12,7 +12,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Team Rubicon - Terminal</title>
+    <img src="http://www.teamrubiconuk.org/wp-content/themes/TeamRubicon/assets/img/TR-Logo2x.png">
     
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
