@@ -41,7 +41,7 @@
       <!-- The justified navigation menu is meant for single line per list item.
            Multiple lines will require custom code not provided by Bootstrap. -->
       <div class="masthead">
-        <h3 class="text-muted">Team Rubicon - Terminal</h3>
+        <img src="http://www.teamrubiconuk.org/wp-content/themes/TeamRubicon/assets/img/TR-Logo2x.png">
         
         <p align="right"><a href = "logout.php">Sign Out</a></p>
         
