@@ -38,12 +38,10 @@
       border: none;
       cursor: pointer;
     }
-
     .dropdown {
       position: relative;
       display: inline-block;
     }
-
     .dropdown-content {
       display: none;
       position: absolute;
@@ -52,28 +50,30 @@
       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
       z-index: 1;
       }
-
     .dropdown-content a {
       color: black;
       padding: 12px 16px;
       text-decoration: none;
       display: block;
      }
-
     .dropdown-content a:hover {background-color: #f1f1f1}
-
     .dropdown:hover .dropdown-content {
       display: block;
     }
-
     .dropdown:hover .dropbtn {
       background-color: #FF8000;
     }
     </style>
+    
+    <?php
+    include_once 'config.php';
+    ?/
+    
   </head>
 
   <body>
 
+	
     <div class="container">
 
       <!-- The justified navigation menu is meant for single line per list item.
@@ -100,7 +100,7 @@
         <div class="col-lg-4">
           <h2>Join the Team Rubicon</h2>
           <p>Sign up to join the Team Rubicon </p>
-          <form action="/action_page.php">
+          <form method="post" action="insert_data.php">
             First name:<br>
             <input type="text" name="firstname">
             <br><br>
@@ -116,7 +116,7 @@
             <input type="radio" name="gender" value="other"> Other
             <br><br>
             Email Address:<br>
-            <input type="email" name="emailadress">
+            <input type="email" name="emailaddress">
             <br><br>
             <input type="radio" name"subcriptions" value="emailid"> Do you want to subscribe to the our email newsletter<br>
             <br>
@@ -170,5 +170,7 @@
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    
+
   </body>
 </html>
