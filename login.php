@@ -39,30 +39,78 @@
            Multiple lines will require custom code not provided by Bootstrap. -->
       <div class="masthead">
         <h3 class="text-muted">Team Rubicon - Terminal</h3>
-        <nav>
+            
+                <nav>
           <ul class="nav nav-justified">
             <li><a href="index.html">About</a></li>
             <li><a href="volunteer.html">Volunteer</a></li>
-            <li class="active"><a href="#">Operations</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="operations.html">Operations</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
           </ul>
         </nav>
       </div>
+      <br>
 
-      <!-- Jumbotron -->
-      <div> <!--class="jumbotron"-->
-        <h1>Operations</h1>
-      </div>
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-lg-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
-       </div>
+<?php
+    include("config.php");
+   session_start();
+   
+   if($_SERVER["REQUEST_METHOD"] == "POST") {
+      // username and password sent from form 
+      
+      $myusername = mysqli_real_escape_string($db,$_POST['username']);
+      $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
+      
+      $sql = "SELECT volunteer_id FROM Volunteers WHERE user_name = '$myusername' and password = '$mypassword'";
+      $result = mysqli_query($db,$sql);
+      
+      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+      
+      
+      $count = mysqli_num_rows($result);
+      
+      // If result matched $myusername and $mypassword, table row must be 1 row
+		
+      if($count == 1) {
+         //session_register("$myusername");
+         $_SESSION['myusername']="myusername";
+         $_SESSION['login_user'] = $myusername;
+         
+         header("location: profile.php");
+      }else {
+         $error = "Your Login Name or Password is invalid";
+      ?>
+      Echo
+      <?php
+      }
+   }
+?>
+	
+      <div align = "center">
+         <div style = "width:300px; border: solid 1px #333333; " align = "left">
+            <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Login</b></div>
+				
+            <div style = "margin:30px">
+               
+               <form action = "" method = "post">
+                  <label>UserName  :</label><input type = "text" name = "username" class = "box"/><br /><br />
+                  <label>Password  :</label><input type = "password" name = "password" class = "box" /><br/><br />
+                  <input type = "submit" value = " Submit "/><br />
+               </form>
+               
+               <div style = "font-size:11px; color:#cc0000; margin-top:10px">
+               <?php// echo $error;
+               ?>
+               </div>
+					
+            </div>
+				
+         </div>
+			
       </div>
 
-      <!-- Site footer -->
+   </body>
+<!-- Site footer -->
       <footer class="footer">
         <p>&copy; 2017 Code for Good - Team 8</p>
       </footer>
