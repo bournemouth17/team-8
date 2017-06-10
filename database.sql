@@ -21,7 +21,6 @@ CREATE TABLE Volunteers (
   email varchar(45) NOT NULL,
   phone varchar(45) NOT NULL,
   location varchar(45) NOT NULL,
-  interests varchar(45) NOT NULL,
   preference varchar(45) NOT NULL,
   nok_first_name varchar(45) NOT NULL,
   nok_last_name varchar(45) NOT NULL,
@@ -35,7 +34,7 @@ CREATE TABLE Volunteers (
   Code to create the Volunteer_skills table within the database
   To hold all the Volunteer's skills information
   */
-     
+  
   CREATE TABLE Volunteer_skills ( 
   	volunteer_id int,
   	skill_id int,
@@ -62,32 +61,49 @@ CREATE TABLE Operations (
 Code to create the Matched table within the database.
 This manages all volunteers as they are matched to an operation.
 */	
-CREATE TABLE Matched AS (
-	SELECT   
-		v.volunteer_id,
-  		v.first_name,
-  		v.last_name,
-  		v.age,
-  		v.gender,
-  		v.email,
-  		v.phone,
-  		v.location,
-  		v.interests,
-  		v.skills,
-  		v.preference, 
-  		v.nok_first_name,
-  		v.nok_last_name,
-  		o.operation_id,
-  		o.operation_type,
-  		o.location
-  	FROM v.Volunteers 
-  	JOIN o.Operations ON v.skills = o.skills
-  	);
+CREATE TABLE Matched AS ( SELECT s.volunteer_id, v.first_name, v.last_name, v.age, v.gender, v.email, v.phone, v.location, v.preference, s.skill_id, v.nok_first_name, v.nok_last_name, o.operation_id, o.operation_type, o.operations_location FROM Volunteer_skills s JOIN Operations o ON s.skill_id = o.skill_id JOIN Volunteers v ON v.volunteer_id = s.volunteer_id);
+  	
+  
+  	
+  	
+/*
+preference table
+interests table 
+*/
+
+CREATE TABLE Volunteers_interests (
+	volunteer_id int,
+	interest_id int NOT NULL AUTO_INCREMENT,
+	interest varchar(45) NOT NULL,
+  PRIMARY KEY (interest_id),
+  FOREIGN KEY (volunteer_id) REFERENCES Volunteers(volunteer_id),
+  UNIQUE KEY interest_id_UNIQUE (interest_id)
+  );
+  
+CREATE TABLE Working_preferences (
+	preference_id int NOT NULL AUTO_INCREMENT,
+	preference varchar(45) NOT NULL,
+	PRIMARY KEY (preference_id),
+	UNIQUE KEY preference_id_UNIQUE (preference_id)
+	);
 
 
 
 
 
 
+$sql="SELECT preference FROM Preferences"; 
 
+/* You can add order by clause to the sql statement if the names are to be displayed in alphabetical order */
 
+echo "<select name=presence value=''>Presence</option>"; // list box select command
+
+foreach ($dbo->query($sql) as $row){//Array or records stored in $row
+
+echo "<option value=$row[id]>$row[name]</option>"; 
+
+/* Option values are added by looping through the array */ 
+
+}
+
+ echo "</select>";
