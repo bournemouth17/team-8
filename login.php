@@ -40,13 +40,32 @@
       <div class="masthead">
         <h3 class="text-muted">Team Rubicon - Terminal</h3>
             
-                <nav>
+        <?php
+            include("check.php");
+        ?>
+        
+        <nav>
+        <?php
+            if ($loginst == 1)
+            {
+                ?>
+                <ul class="nav nav-justified">
+                    <li><a href="index.html">About</a></li>
+                    <li><a href="volunteer.html">Training</a></li>
+                    <li><a href="operations.html">Operations</a></li>
+                    <li><a href="signup.html">Profile</a></li>      
+                </ul>
+            
+        <?php } else
+        {
+            ?>
           <ul class="nav nav-justified">
             <li><a href="index.html">About</a></li>
             <li><a href="volunteer.html">Volunteer</a></li>
             <li><a href="operations.html">Operations</a></li>
             <li><a href="signup.html">Sign Up</a></li>
           </ul>
+        <?php } ?>
         </nav>
       </div>
       <br>
