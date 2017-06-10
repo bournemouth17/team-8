@@ -12,4 +12,3 @@ INSERT INTO Volunteers (first_name, last_name, age, gender, email, phone, locati
 
 
 
-

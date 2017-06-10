@@ -82,7 +82,7 @@ CREATE TABLE Matched AS (
   	JOIN Operations AS o ON s.skill_id = o.skill_id
   	AND Volunteers AS v ON v.volunteer_id = s.volunteer_id
   	);
-
+  	
 /*
 preference table
 interests table 
